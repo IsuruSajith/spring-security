@@ -29,6 +29,10 @@ public class JWTServiceImpl {
         return claimsResolvers.apply(claims);
     }
 
+    private Claims extractAllClaims(String token) {
+        return Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token).getBody();
+    }
+
     private Key getSignKey() {
         byte[] key = Decoders.BASE64.decode("01q2U9WANskJw2LVozjjbi7Bb+DKHbdeciWLELQ1IhA=");
         return Keys.hmacShaKeyFor(key);

@@ -1,6 +1,7 @@
 package com.example.securingweb.securitytest.config;
 
 import com.example.securingweb.securitytest.service.JWTService;
+import com.example.securingweb.securitytest.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.core.context.SecurityContextHolder;

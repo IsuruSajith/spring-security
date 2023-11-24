@@ -23,10 +23,7 @@ public class JWTServiceImpl {
     }
 
     private Key getSignKey() {
-
-        byte[] key = Decoders.BASE64.decode("");
-
+        byte[] key = Decoders.BASE64.decode("01q2U9WANskJw2LVozjjbi7Bb+DKHbdeciWLELQ1IhA=");
         return Keys.hmacShaKeyFor(key);
     }
-
 }

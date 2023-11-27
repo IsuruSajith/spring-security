@@ -1,11 +1,14 @@
 package com.example.securingweb.securitytest;
 
+import com.example.securingweb.securitytest.entity.Role;
+import com.example.securingweb.securitytest.entity.User;
 import com.example.securingweb.securitytest.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class SpringSecurityApplication implements CommandLineRunner {
@@ -18,6 +21,16 @@ public class SpringSecurityApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		User adminAccount = userRepository.findByRole(Role.ADMIN);
+		if (null == adminAccount) {
+			User user = new User();
+			user.setEmail("admin@gmail.com");
+			user.setFirstName("admin");
+			user.setLastName("admin");
+			user.setRole(Role.ADMIN);
+			user.setPassword(new BCryptPasswordEncoder().encode("admin"));
+			userRepository.save(user);
+		}
 
 	}
 }

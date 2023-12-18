@@ -22,5 +22,7 @@ public User signUp(SignUpRequest signUpRequest) {
     user.setLastName(signUpRequest.getLastName());
     user.setRole(Role.USER);
     user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+
+    userRepository.save(user);
 }
 }

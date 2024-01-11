@@ -24,5 +24,9 @@ public User signUp(SignUpRequest signUpRequest) {
     user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
 
     userRepository.save(user);
+
+
+    return user;
 }
+
 }
